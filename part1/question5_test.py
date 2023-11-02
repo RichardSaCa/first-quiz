@@ -32,12 +32,13 @@ def create_favorite_foods(con):
   con.execute(sql_create_favorite_foods)
 
 def alter_people_animals_food(con):
-  con.executescript(sql_alter_tables_with_favorite_food);
+  con.executescript(sql_alter_tables_with_favorite_food)
 
 def update_people_animals_food(con):
   con.executemany("UPDATE people SET favorite_food_id = ? WHERE name = ?", PEOPLE_FOOD)
   con.executemany("UPDATE animals SET favorite_food_id = ? WHERE name = ?", ANIMALS_FOOD)
 
+# start 
 def test_create_favorite_foods():
   pets_db.create_db()
 
@@ -67,8 +68,12 @@ def test_select_all_vegetarian_pets():
     rows = res.fetchall()
 
   rows.sort()
-
   assert rows[0] == ('leyla', 'spinach')
   assert rows[1] == ('martin', 'spinach')
   assert rows[2] == ('ricky', 'cough drops')
   assert rows[3] == ('shannon', 'turnips')
+
+
+#test_create_favorite_foods()
+#test_alter_tables_with_favorite_food()
+test_select_all_vegetarian_pets()

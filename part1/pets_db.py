@@ -51,6 +51,7 @@ PEOPLE_ANIMALS = [
 
 DB_NAME = "quiz_pets"
 
+#create database
 def get_connection():
   return sqlite3.connect(DB_NAME)
 
@@ -63,7 +64,17 @@ def create_db():
   drop_db()
 
   with get_connection() as con:
+    cursor = con.cursor()
     con.executescript(TABLE_SCHEMA)
     con.executemany("INSERT INTO animals VALUES(?, ?, ?, ?)", ANIMALS)
     con.executemany("INSERT INTO people VALUES(?, ?, ?, ?)", PEOPLE)
     con.executemany("INSERT INTO people_animals VALUES(?, ?)", PEOPLE_ANIMALS)
+    #cursor.execute("SELECT a.name,a.species,a.age FROM animals a left join people_animals pa on pa.pet_id = a.animal_id left join people p on p.person_id = pa.owner_id where (p.person_id is NULL)")
+    #cursor.execute("SELECT COUNT(*) from animals a  join people_animals pa on pa.pet_id = a.animal_id join people p on p.person_id = pa.owner_id where (a.age > p.age)")
+    #cursor.execute("SELECT p.name, a.name,a.species FROM animals a  join people_animals pa on pa.pet_id = a.animal_id join people p on p.person_id = pa.owner_id  group by a.animal_id,a.name having (count(distinct pa.owner_id) = 1) and pa.owner_id = 2")
+    #result = cursor.fetchall()
+  
+  # for row in result:
+  #   print(row)
+#get_connection()
+create_db()

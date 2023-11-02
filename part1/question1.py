@@ -13,6 +13,7 @@
 # need to be fixed. The test suite in `question1_test.py` will verify the output.
 # Read the test suite to know the values that these functions should return.
 
+#add new city -> "New York" 
 def get_city_temperature(city):
    if city == "Quito":
       return 22
@@ -20,6 +21,10 @@ def get_city_temperature(city):
       return 17
    if city == "San Francisco":
       return 16
+   if city == "New York":
+      return 14
+
+#add new city Quito
 
 def get_city_weather(city):
 
@@ -29,6 +34,8 @@ def get_city_weather(city):
      sky_condition = "cloudy"
   elif city == "New York":
      sky_condition = "rainy"
+  elif city == "Quito":
+     sky_condition = "sunny"
 
   temperature = get_city_temperature(city)
 

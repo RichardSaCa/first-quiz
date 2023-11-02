@@ -20,7 +20,11 @@
 
 sql_create_favorite_foods = """
 
-Your SQL here.
+CREATE TABLE favorite_foods (
+      food_id integer,
+      name text not null,
+      vegetarian integer not null
+    );
 
 """
 
@@ -29,9 +33,11 @@ Your SQL here.
 # The test suite will verify the new changes by inserting some new rows. 
 
 sql_alter_tables_with_favorite_food = """
+ALTER TABLE animals
+ADD favorite_food_id integer;
 
-Your SQL here.
-
+ALTER TABLE people
+ADD favorite_food_id integer;
 """
 
 # Part 5.C:
@@ -40,6 +46,6 @@ Your SQL here.
 
 sql_select_all_vegetarian_pets = """
 
-Your SQL here.
+SELECT  a.name,ff.name FROM animals a join favorite_foods ff on ff.food_id = a.favorite_food_id where (ff.vegetarian = 1)
 
 """
