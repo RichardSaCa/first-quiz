@@ -33,6 +33,7 @@ class make_oven:
   def __init__(self):
       #define 
       self.mis_ing = []
+      # result to print
       result = ""
   def add(self,item):
     self.mis_ing.append(item)

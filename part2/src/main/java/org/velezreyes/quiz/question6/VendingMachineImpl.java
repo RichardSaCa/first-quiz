@@ -5,10 +5,12 @@ package org.velezreyes.quiz.question6;
 public class VendingMachineImpl {
 
   public static Integer money = 0;
+
   public static VendingMachine getInstance() {
     // Fix me!
     VendingMachine vendingMachine = new VendingMachine() {
       @Override
+      // add 25 to the variable money
       public void insertQuarter() {
         money = money + 25;
       }
@@ -17,7 +19,7 @@ public class VendingMachineImpl {
         if(name.equals("ScottCola") && money == 0){
           throw new NotEnoughMoneyException();
         }else if(name.equals("ScottCola") && money == 75){
-          Drink drink = new Drink() {
+          Drink drink = new Drink() { //new instance of drink
             @Override
             public String getName() {
               return name;
@@ -33,7 +35,7 @@ public class VendingMachineImpl {
         }else if(name.equals("KarenTea") && money <= 75){
           throw new NotEnoughMoneyException();
         }else if(name.equals("KarenTea") && money > 75){
-          Drink drink = new Drink() {
+          Drink drink = new Drink() { //new instance of drink
             @Override
             public String getName() {
               return name;

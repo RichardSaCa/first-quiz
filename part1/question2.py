@@ -19,4 +19,5 @@ def swapper(list):
   return (list[1],list[0])
 
 def run_swapper(list_of_tuples):
+  # add function map
   return list(map(swapper, list_of_tuples))
